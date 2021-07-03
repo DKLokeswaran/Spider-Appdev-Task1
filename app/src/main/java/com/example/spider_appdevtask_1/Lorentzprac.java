@@ -9,6 +9,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -62,6 +63,7 @@ public class Lorentzprac extends AppCompatActivity {
         temp=findViewById(R.id.row);
     }
     public void sub(View view){
+        closekeyboard();
         if(ques.getText().toString().equals("")){
             Toast.makeText(this, "Enter velocity", Toast.LENGTH_SHORT).show();
         }
@@ -77,5 +79,12 @@ public class Lorentzprac extends AppCompatActivity {
     public void backFrm2(View view){
         Intent intent=new Intent(Lorentzprac.this,MainActivity.class);
         startActivity(intent);
+    }
+    public void closekeyboard(){
+        View view=this.getCurrentFocus();
+        if(view!=null){
+            InputMethodManager methodManager=(InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+            methodManager.hideSoftInputFromWindow(view.getWindowToken(),0);
+        }
     }
 }

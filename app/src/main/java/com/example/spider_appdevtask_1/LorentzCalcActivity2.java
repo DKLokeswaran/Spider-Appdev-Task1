@@ -2,11 +2,13 @@ package com.example.spider_appdevtask_1;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -46,6 +48,7 @@ public class LorentzCalcActivity2 extends AppCompatActivity {
         answer=findViewById(R.id.ans1);
     }
     public void enter(View view){
+        closekeyboard();
         if(speed.getText().toString().equals("")){
             Toast.makeText(this, "Enter a value", Toast.LENGTH_SHORT).show();
             answer.setText("Lorentz Factor:");
@@ -58,5 +61,12 @@ public class LorentzCalcActivity2 extends AppCompatActivity {
     public void backFrm1(View view){
         Intent intent=new Intent(LorentzCalcActivity2.this,MainActivity.class);
         startActivity(intent);
+    }
+    public void closekeyboard(){
+        View view=this.getCurrentFocus();
+        if(view!=null){
+            InputMethodManager methodManager=(InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+            methodManager.hideSoftInputFromWindow(view.getWindowToken(),0);
+        }
     }
 }
