@@ -79,6 +79,7 @@ public class Lorentzprac extends AppCompatActivity {
     public void backFrm2(View view){
         Intent intent=new Intent(Lorentzprac.this,MainActivity.class);
         startActivity(intent);
+        finish();
     }
     public void closekeyboard(){
         View view=this.getCurrentFocus();

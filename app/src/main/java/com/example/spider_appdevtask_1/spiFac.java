@@ -91,6 +91,6 @@ public class spiFac extends AppCompatActivity {
     public void backFrm3(View view){
         Intent intent=new Intent(spiFac.this,MainActivity.class);
         startActivity(intent);
-
+        finish();
     }
 }
